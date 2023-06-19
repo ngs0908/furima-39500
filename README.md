@@ -5,7 +5,6 @@
 | nickname           | string  | null: false                | 
 | email              | string  | null: false, unique: true  | 
 | encrypted_password | string  | null: false                | 
-| confirm_password   | string  | null: false                | 
 | last_name          | string  | null: false                | 
 | first_name         | string  | null: false                | 
 | last_name_kana     | string  | null: false                | 
@@ -39,7 +38,7 @@
 
 | Column             | Type        | Options                         |
 | ------------------ | ----------- | ------------------------------- |
-| post_code_id       | integer     | null: false                     |
+| post_code          | string      | null: false                     |
 | prefecture_id      | integer     | null: false                     |
 | municipality       | string      | null: false                     |
 | house_number       | string      | null: false                     |

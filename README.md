@@ -1,14 +1,16 @@
 ## usersテーブル
 
-| Column             | Type    | Options       |
-| ------------------ | ------- | ------------- |
-| nickname           | string  | null: false   | 
-| mail               | string  | unique: true  | 
-| encrypted_password | string  | null: false   | 
-| confirm_password   | string  | null: false   | 
-| realname           | string  | null: false   | 
-| kana               | string  | null: false   | 
-| date_of_birth      | date    | null: false   | 
+| Column             | Type    | Options                    |
+| ------------------ | ------- | -------------------------- |
+| nickname           | string  | null: false                | 
+| email              | string  | null: false, unique: true  | 
+| encrypted_password | string  | null: false                | 
+| confirm_password   | string  | null: false                | 
+| last_name          | string  | null: false                | 
+| first_name         | string  | null: false                | 
+| last_name_kana     | string  | null: false                | 
+| first_name_kana    | string  | null: false                |
+| date_of_birth      | date    | null: false                | 
 
 ### Association
 - has_many :items
@@ -30,15 +32,15 @@
 | user               | references  | null: false, foreign_key: true  |
 
 ### Association
-- belongs_to :purchase
+- has_one :purchase
 - belongs_to :user
 
 ## addressesテーブル
 
 | Column             | Type        | Options                         |
 | ------------------ | ----------- | ------------------------------- |
-| post_code          | string      | null: false                     |
-| prefecture         | string      | null: false                     |
+| post_code_id       | integer     | null: false                     |
+| prefecture_id      | integer     | null: false                     |
 | municipality       | string      | null: false                     |
 | house_number       | string      | null: false                     |
 | house_name         | string      |                                 |

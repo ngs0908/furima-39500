@@ -1,13 +1,17 @@
-function furima (){
+function furima() {
   const articleText  = document.getElementById("item-price");
-  articleText.addEventListener("keyup", () => {
+  articleText.addEventListener("input", () => {
     const countVal = articleText.value;
     const charNum  = document.getElementById("add-tax-price");
     const charNum2  = document.getElementById("profit");
-    charNum.innerHTML = `${countVal * 0.1} `;
-    charNum2.innerHTML = `${countVal - charNum.innerHTML} `;
-    
+    const taxPrice = Math.floor(countVal * 0.1);
+    charNum.innerHTML = `${taxPrice} `;
+    charNum2.innerHTML = `${Math.floor(countVal - taxPrice)} `;
   });
 };
 
-window.addEventListener('turbo:load', furima);
+// 通常のページロード時に実行
+document.addEventListener('DOMContentLoaded', furima);
+
+// Turboフレームワークのページ遷移時に実行
+document.addEventListener('turbo:load', furima);

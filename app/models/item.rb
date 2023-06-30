@@ -10,4 +10,8 @@ class Item < ApplicationRecord
     less_than_or_equal_to: 9_999_999,
     only_integer: true
   }
+
+  def was_attached?
+    self.image.attached?
+  end
 end

@@ -15,7 +15,6 @@ class Category < ActiveHash::Base
 
   include ActiveHash::Associations
   has_many :articles
-
 end
 
 class Condition < ActiveHash::Base
@@ -28,10 +27,9 @@ class Condition < ActiveHash::Base
     { id: 6, name: '傷や汚れあり' },
     { id: 7, name: '全体的に状態が悪い' }
   ]
-  
+
   include ActiveHash::Associations
   has_many :articles
-  
 end
 
 class DeliveryCharge < ActiveHash::Base
@@ -40,10 +38,9 @@ class DeliveryCharge < ActiveHash::Base
     { id: 2, name: '着払い(購入者負担)' },
     { id: 3, name: '送料込み(出品者負担)' }
   ]
-  
+
   include ActiveHash::Associations
   has_many :articles
-  
 end
 
 class Prefecture < ActiveHash::Base
@@ -97,10 +94,9 @@ class Prefecture < ActiveHash::Base
     { id: 47, name: '鹿児島県' },
     { id: 48, name: '沖縄県' }
   ]
-  
+
   include ActiveHash::Associations
   has_many :articles
-  
 end
 
 class ShipDate < ActiveHash::Base
@@ -110,8 +106,7 @@ class ShipDate < ActiveHash::Base
     { id: 3, name: '2~3日で発送' },
     { id: 4, name: '4~7日で発送' }
   ]
-  
+
   include ActiveHash::Associations
   has_many :articles
-  
 end

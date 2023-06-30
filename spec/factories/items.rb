@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :item do
-    item_name { "テスト商品" }
-    description { "Sample description" }
+    item_name { 'テスト商品' }
+    description { 'Sample description' }
     category_id { 1 }
     condition_id { 1 }
     delivery_charge_id { 1 }

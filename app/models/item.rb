@@ -8,7 +8,7 @@ class Item < ApplicationRecord
   belongs_to :prefecture
   belongs_to :ship_date
   has_one_attached :image
-  has_many :purchases
+  has_one :purchase
 
   validates :image, :item_name, :description, presence: true
   validates :category_id, :condition_id, :delivery_charge_id, :prefecture_id, :ship_date_id, exclusion: { in: [1], message: "is not a valid option" }
@@ -23,7 +23,7 @@ class Item < ApplicationRecord
     image.attached?
   end
 
-  def sold_out?
-    purchases.exists?  # 購入履歴が存在するかどうかをチェック
-  end
+  # def sold_out?
+  #   purchases.exists?  # 購入履歴が存在するかどうかをチェック
+  # end
 end

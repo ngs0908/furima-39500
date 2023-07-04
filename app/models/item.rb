@@ -1,5 +1,4 @@
 class Item < ApplicationRecord
-  # has_one :purchase
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :user
   belongs_to :category
@@ -23,7 +22,7 @@ class Item < ApplicationRecord
     image.attached?
   end
 
-  # def sold_out?
-  #   purchases.exists?  # 購入履歴が存在するかどうかをチェック
-  # end
+  def sold_out?
+    purchase.present?   # 購入履歴が存在するかどうかをチェック
+  end
 end

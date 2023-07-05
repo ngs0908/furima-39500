@@ -1,5 +1,9 @@
 class ItemsController < ApplicationController
-  before_action :authenticate_user!, only: [:new]
+  before_action :authenticate_user!, only: [:new, :edit,]
+  before_action :set_item, only: [:show, :edit, :update]
+
+  
+
   def new
     @item = Item.new
   end
@@ -18,8 +22,24 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.find(params[:id])
     @user = @item.user
+  end
+
+  def edit
+    return unless current_user != @item.user
+    redirect_to root_path
+  end
+
+  def update
+    if @item.update(item_params)
+      redirect_to @item
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
+  def set_item
+    @item = Item.find(params[:id])
   end
 
   private

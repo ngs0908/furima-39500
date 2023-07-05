@@ -3,6 +3,6 @@ Rails.application.routes.draw do
  
   root 'items#index'
   resources :items
-
+  resources :purchases
   # post '/items/new', to: 'items#create'
 end

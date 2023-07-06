@@ -21,6 +21,11 @@ class ItemsController < ApplicationController
 
   def show
     @user = @item.user
+    @item = Item.find(params[:id])
+
+    if @item.sold_out?
+      redirect_to root_path
+    end
   end
 
   def edit

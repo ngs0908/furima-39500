@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :set_item, only: [:show, :edit, :update, :destroy]
+  before_action :user_check, only: [:show]
 
   def new
     @item = Item.new
@@ -20,14 +21,13 @@ class ItemsController < ApplicationController
   end
 
 def show
-  @item = Item.find(params[:id])
   @user = @item.user
-
-  if @item.sold_out? && current_user == @item.user
+  
+  if @item.sold_out? && user_check
     redirect_to root_path and return
   end
 
-  if user_signed_in? && current_user == @item.user
+  if user_signed_in? && user_check
     @editable = true
   end
 end
@@ -52,14 +52,18 @@ end
     return unless current_user != @item.user
   end
 
-  def set_item
-    @item = Item.find(params[:id])
-  end
-
   private
 
   def item_params
     params.require(:item).permit(:image, :item_name, :description, :category_id, :condition_id, :delivery_charge_id,
                                  :prefecture_id, :ship_date_id, :price).merge(user_id: current_user.id)
   end
+
+  def set_item
+    @item = Item.find(params[:id])
+  end
 end
+
+  def user_check
+    current_user == @item.user
+  end

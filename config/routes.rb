@@ -5,5 +5,4 @@ Rails.application.routes.draw do
   resources :items do
     resources :purchases
   end
-  # post '/items/new', to: 'items#create'
 end

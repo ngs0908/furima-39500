@@ -33,8 +33,9 @@ def show
 end
 
   def edit
-    return unless current_user != @item.user
-    redirect_to root_path
+    if current_user != @item.user || @item.sold_out?
+      redirect_to root_path and return
+    end
   end
 
   def update

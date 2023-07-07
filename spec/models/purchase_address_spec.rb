@@ -74,6 +74,12 @@ RSpec.describe PurchaseAddress, type: :model do
         @purchase_address.valid?
         expect(@purchase_address.errors.full_messages).to include("Phone number must be 10 to 11 digits and contain only numbers")
       end
+
+      it "tokenが空では登録できないこと" do
+        purchase_address = PurchaseAddress.new(token: nil)
+        purchase_address.valid?
+        expect(purchase_address.errors.full_messages).to include("Token can't be blank")
+      end
     end
   end
 end

@@ -19,14 +19,18 @@ class ItemsController < ApplicationController
     end
   end
 
-  def show
-    @user = @item.user
-    @item = Item.find(params[:id])
+def show
+  @item = Item.find(params[:id])
+  @user = @item.user
 
-    if @item.sold_out?
-      redirect_to root_path
-    end
+  if @item.sold_out? && current_user == @item.user
+    redirect_to root_path and return
   end
+
+  if user_signed_in? && current_user == @item.user
+    @editable = true
+  end
+end
 
   def edit
     return unless current_user != @item.user

@@ -8,6 +8,10 @@ class PurchasesController < ApplicationController
     if @item.sold_out?
       redirect_to root_path
     end
+
+    if user_check
+      redirect_to root_path and return
+    end
   end
 
   def set_item

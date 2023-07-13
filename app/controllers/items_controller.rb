@@ -23,9 +23,9 @@ class ItemsController < ApplicationController
 def show
   @user = @item.user
   
-  if @item.sold_out? && user_check
-    redirect_to root_path and return
-  end
+  # if @item.sold_out? && !user_check
+  #   redirect_to root_path and return
+  # end
 
   if user_signed_in? && user_check
     @editable = true

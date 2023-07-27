@@ -75,10 +75,6 @@ group :development do
   gem 'rubocop', require: false
 end
 
-group :production do
-  gem 'pg'
-end
-
 gem 'devise'
 
 gem 'rspec-rails', '~> 4.0.0'
@@ -98,3 +94,7 @@ gem 'payjp'
 gem 'gon'
 
 gem "aws-sdk-s3", require: false
+
+group :production do
+  gem 'unicorn', '6.1.0'
+end
